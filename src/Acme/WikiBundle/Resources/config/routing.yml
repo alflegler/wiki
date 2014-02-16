@@ -1,0 +1,23 @@
+
+acme_wiki_add:
+    pattern:  /wiki{parentPage}/add
+    defaults: { _controller: AcmeWikiBundle:Default:add }
+    requirements:
+        parentPage:  (\/[a-z0-9_]+)*
+
+acme_wiki_edit:
+    pattern:  /wiki{page}/edit
+    defaults: { _controller: AcmeWikiBundle:Default:edit }
+    requirements:
+        page:  (\/[a-z0-9_]+)*
+
+acme_wiki_delete:
+    pattern:  /wiki{page}/delete
+    defaults: { _controller: AcmeWikiBundle:Default:delete }
+    requirements:
+        page:  (\/[a-z0-9_]+)+
+acme_wiki_page:
+    pattern:  /wiki{page}
+    defaults: { _controller: AcmeWikiBundle:Default:index }
+    requirements:
+        page:  (\/[a-z0-9_]+)*

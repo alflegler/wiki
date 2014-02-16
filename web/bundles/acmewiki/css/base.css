@@ -1,0 +1,50 @@
+body {
+					font-family: arial, sans-serif;
+					font-size: 13px;
+					color: #000000;
+					background-color: #F6F4F0;
+					margin: 0px;
+				}
+
+				div.page {
+					width: 816px;
+					margin: 10px auto;
+					padding: 40px 50px 40px 50px;
+					box-shadow: 0px 0px 20px 3px #d3d3d3;
+					border-radius: 4px;
+					background-color: #ffffff;
+				}
+				div.home {
+					text-align: left;
+					float: left;
+				}
+				div.act {
+					float: right;
+				}
+				div.title {
+					text-align: center;
+				}
+
+				div.content {
+					text-align: left;
+					min-height: 200px;
+				}
+				div.links {
+					float: left;
+					margin-right: 10px;
+				}
+				div.actions {
+					float: right;
+				}
+				h1 {
+					font-size: 20px;
+					font-family: verdana;
+				}
+
+				h2 {
+					font-size: 14px;
+					font-family: verdana;
+				}
+				li {
+					list-style: none;
+				}

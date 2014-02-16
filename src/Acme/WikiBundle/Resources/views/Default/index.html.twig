@@ -1,0 +1,68 @@
+{% extends 'AcmeWikiBundle::base.html.twig' %}
+
+{% block stylesheets%}
+    {{ parent() }}
+    <style type="text/css">
+        .actions {
+            margin: 0;
+        }
+        .actions li {
+            float: right;
+            padding: 0 5px 0 5px;
+        }
+    </style>
+{% endblock %}
+
+{% block homePage %}
+    <div class = "home">
+        <a href="{{ path('acme_wiki_page', {'page': ''}) }}" class="internal">Home</a>
+    </div>
+{% endblock %}
+{% block actions%}
+    <ul class="actions" >
+        {% if parentPage is not null %}
+            <li>
+                <a href= "{{ path('acme_wiki_delete', {'page': page.Path}) }}" >delete page</a>
+            </li>
+        {% endif %}
+        <li>
+            <a href= "{{ path('acme_wiki_add', {'parentPage': page.Path}) }}" >add new page</a>
+        </li>
+        <li>
+            <a href= "{{ path('acme_wiki_edit', {'page': page.Path}) }}" >edit page</a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block title %}
+    <h1>{{page.Title}}</h1>
+{% endblock %}
+
+{% block content %}
+    <p>
+	{% autoescape 'html' %}
+		{{page.Text | raw | nl2br}}
+	{% endautoescape %}
+    </p>
+{% endblock %}
+
+{% block links %}
+    {% if (parentPage is not null) and (parentPage.Pagename is not empty) %}
+        <ul>
+        <strong>Parent page:</strong>
+            <li>
+                <a href= "{{ path('acme_wiki_page', {'page': parentPage.Parentpath~'/'~parentPage.Pagename}) }}" class="internal">{{parentPage.Pagename}}</a>
+            </li>
+        </ul>
+    {% endif %}
+    {% if childrenPages is not empty %}
+        <ul>
+            <strong>Child pages:</strong>
+            {% for childrenPage in childrenPages %}
+                <li>
+                    <a href= "{{ path('acme_wiki_page', {'page': childrenPage.Parentpath~'/'~childrenPage.Pagename}) }}" class="internal">{{childrenPage.Pagename}}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

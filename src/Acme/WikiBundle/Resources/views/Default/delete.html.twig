@@ -1,0 +1,22 @@
+{% extends 'AcmeWikiBundle::base.html.twig' %}
+
+{% block header %}
+{% endblock %}
+{% block title %}
+    <h1>Delete page</h1>
+{% endblock %}
+{% block content %}
+    <p>
+        You are going to delete page "{{page.Path}}" <br/>
+        All child pages will be removed<br/><br/>
+        Continue?
+        <form method = "POST">
+            <button>Yes</button>
+        </form>
+        <form method="GET" action = "{{ path('acme_wiki_page', {'page': page.Path})}}">
+            <button>No</button>
+        </form>
+    </p>
+{% endblock %}
+{% block footer %}
+{% endblock %}

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<database name="default"
+    namespace="Acme\WikiBundle\Model"
+    defaultIdMethod="native"
+>   
+
+    <table name="page">
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+            <parameter name="Charset" value="utf8"/>
+            <parameter name="Collate" value="utf8_general_ci"/>
+        </vendor>
+        <column name="id"
+            type="integer"
+            required="true"
+            primaryKey="true"
+            autoIncrement="true"
+        />
+        <column name="parent_id"
+            type="integer"
+        />
+         <column name="parentPath"
+            type="varchar"
+            primaryString="true"
+        />
+        <column name="pageName"
+            type="varchar"
+            primaryString="true"
+        />
+        <column name="title"
+            type="varchar"
+        />
+        <column name="text"
+            type="longvarchar"
+            lazyLoad="true"
+        />
+        <foreign-key foreignTable="page"
+            name="parent"
+            phpName="Parent"
+            refPhpName="Children_ref"
+            onDelete="cascade"
+        >
+            <reference local="parent_id" foreign="id" />
+        </foreign-key>
+        <unique name="pagePathIndex">
+            <unique-column name="parentPath"/>
+            <unique-column name="pageName" />
+        </unique>
+
+
+
+
+    </table>
+</database>

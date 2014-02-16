@@ -1,0 +1,17 @@
+{% extends 'AcmeWikiBundle::base.html.twig' %}
+
+{% block header %}
+{% endblock %}
+{% block title %}
+<h1>404</h1>
+{% endblock %}
+{% block content %}
+<div style="text-align: center">
+    <span>Page "{{parentPath~'/'~pageName}}" doesn't exist</span><br/>
+        <span>to add this page, click 
+            <a href= "{{ path('acme_wiki_add', {'parentPage': parentPath, 'name':pageName}) }}">hear</a>
+    </span>
+</div>
+{% endblock %}
+{% block footer %}
+{% endblock %}

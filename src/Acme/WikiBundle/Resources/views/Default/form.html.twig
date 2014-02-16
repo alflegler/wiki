@@ -1,0 +1,61 @@
+{% extends 'AcmeWikiBundle::base.html.twig' %}
+
+{% block stylesheets%}
+    {{ parent() }}
+    <link href="{{ asset('bundles/acmewiki/css/form.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    {{ form_start(form, {'attr': {'class' : 'form-container'}}) }}
+        <div class="form-title"><h2>{{action|upper~' page' | upper }}</h2></div>
+        <br/>
+        <div class="error">
+        {{ form_errors(form, {'attr': {'class': 'error'}}) }}
+        </div>
+
+        <div>
+            
+            {{ form_label(form.pageName, 'Page name for link:', {'label_attr': {'class': 'form-title'}}) }} <br/>
+            {{ form_errors(form.pageName) }}
+            {% if action ==  "edit" %}
+                {{ form_widget(form.pageName, {'attr': {'readonly': 'readonly', 'class': 'form-field'}}) }}
+            {% else %}
+                {{ form_widget(form.pageName, {'attr': {'class': 'form-field'}}) }}
+            {% endif %}
+        </div>
+
+        <div>
+            {{ form_errors(form.title) }}    
+            {{ form_label(form.title, 'Page title:',  {'label_attr': {'class': 'form-title'}}) }}
+            <span class="star">*</span><br/>
+            {{ form_widget(form.title, {'attr': {'class': 'form-field'}}) }}
+        </div>
+
+        <div>
+            {{ form_errors(form.text) }}
+            {{ form_label(form.text, 'Page text:',  {'label_attr': {'class': 'form-title'}}) }} 
+            <span class="star">*</span><br/>
+            {{ form_widget(form.text, {'attr': {'class': 'form-field-big'}}) }}
+        </div>
+
+        <div class="submit-container">
+            {{ form_widget(form.save, {'attr': {'class': 'fsubmit-button'}}) }}
+        </div>
+        <br/>
+        <hr/>
+        <p style = "color: gray">
+        Markup rules for page text:<br/><br/>
+        **text** - bold text;<br/> 
+        //text// - italic text;<br/>
+         __text__ - underline text; <br/>
+        [[page1/page2 link_name]] - internal link;<br/>
+        [[http://address link_name]] - external link
+        </p>
+
+    {{ form_end(form) }}
+{% endblock %}
+{% block footer %}
+{% endblock %}

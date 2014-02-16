@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+		<title>Wiki</title>
+		{% block stylesheets %}
+            <link href="{{ asset('bundles/acmewiki/css/base.css') }}" type="text/css" rel="stylesheet" />
+		{% endblock %}
+
+	</head>
+	<body>
+		<div class="page">
+			{% block header %}
+				{% block homePage %}
+				{% endblock %}
+				<div class = "act">
+					{% block actions%}
+					{% endblock %}	
+				</div>
+				<div style="clear: both"></div>
+			{% endblock %}
+			<div class="title">
+				{% block title %}
+	            {% endblock %}
+			</div>
+			<div class="content">
+				{% block content %}
+				{% endblock %}
+			</div>
+			{% block footer %}
+			<hr/>
+			<div class="footer">
+				<div class="links">
+					{% block links %}
+					{% endblock %}	
+				</div>
+				<div style="clear: both"></div>
+			</div>
+			{% endblock %}
+
+		</div>
+	</body>
+</html>

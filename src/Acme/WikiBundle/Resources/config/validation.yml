@@ -1,0 +1,4 @@
+Acme\WikiBundle\Model\Page:
+  properties:
+    pagename:
+      - Regex: {pattern: "/^[a-z0-9_]+$/", message: "Page name field may contain only 'a-z' , '0-9' and '_' characters"}
